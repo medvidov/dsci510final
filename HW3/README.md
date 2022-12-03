@@ -1,6 +1,6 @@
 # Data Collection
 ## Running the code
-- To run `get_data.py`, first ensure that you have a `data` directory containing the folders `5-core/` and `ratings`. 
+- To run `get_data.py`, first ensure that you have a `data` directory containing the folders `5-core/` and `ratings`.  These must be in the same parent directory.
     - These folders should contain your 5-core `.json.gz` and rating `.csv` data respectively.
 - Install the dependencies noted in `requirements.txt`.
     - If these dependencies are not installed, run 
