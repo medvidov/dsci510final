@@ -4,6 +4,8 @@ import os
 import json
 import gzip
 
+# Repository link:  https://github.com/medvidov/dsci510final
+
 def get_five_core_data(directory):
     five_core = {}
     five_core_data = []
