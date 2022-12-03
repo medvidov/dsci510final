@@ -3,6 +3,11 @@
 - To run `get_data.py`, first ensure that you have a `data` directory containing the folders `5-core/` and `ratings`. 
     - These folders should contain your 5-core `.json.gz` and rating `.csv` data respectively.
 - Install the dependencies noted in `requirements.txt`.
+    - If these dependencies are not installed, run 
+    ```
+    pip install [dependency]
+    ```
+    in the terminal to install them.
 - In the terminal run
 ```
 python get_data.py
