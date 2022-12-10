@@ -10,7 +10,7 @@ import gzip
 import re
 import matplotlib.pyplot as plt
 import numpy as np
-from HW3 import helper
+import get_data
 
 # Repository link:  https://github.com/medvidov/dsci510final
 
@@ -21,7 +21,7 @@ pd.options.mode.chained_assignment = None
 def get_most_used_words(directory):
 
     # Get the 5-core data for processing and get the keys (filenames)
-    five_core = get_five_core_data(directory)
+    five_core = get_data.get_five_core_data(directory)
     five_core_keys = list(five_core.keys())
 
     # Counts of each word
@@ -57,7 +57,7 @@ def get_most_used_words(directory):
 def get_average_ratings(directory):
 
     # Get the ratings data and get the keys (filenames)
-    ratings = get_ratings_data(directory)
+    ratings = get_data.get_ratings_data(directory)
     ratings_keys = list(ratings.keys())
 
     # Make a dict for average ratings
@@ -109,19 +109,36 @@ def plot_most_used_words(words, savename):
         labels.append(words[i][0])
 
     # Use the black magic that is plt to make the figure and save it
+    plt.figure(figsize=(10, 10))
     plt.pie(counts, labels = labels)
     plt.legend()
-    plt.savefig(savename) 
+    plt.savefig(savename)
+    print("Saved", savename)
 
-def plot_timeseries(df, axes, label, title, savename):
-    pass
+# Plot and save timeseries, very similar to the above code
+def plot_timeseries(df, x, y, data_label, title, savename):
+    plt.figure(figsize=(10, 10))
+    plt.title(title)
+    plt.xlabel(x)
+    plt.ylabel(y)
+    plt.plot(df, label = data_label)
+    plt.legend()
+    plt.savefig(savename)
+    print("Saved", savename)
+
+# Plot all timeseries possible
+def plot_all_timeseries(average_ratings):
+    for key in average_ratings:
+        plot_timeseries(average_ratings[key], 'Time', 'Average Rating', key + 'Average Ratings Over Time', key + 'Average Rating', key + '.pdf')
 
 if __name__ == '__main__':
 
     AMZN = yf.download(tickers = 'AMZN', period = '10Y', interval = '1d')
-    print(len(AMZN))
+    plot_timeseries(AMZN['Adj Close'], 'Time', 'Stock Price', 'AMZN Adjusted Closing Price', 'AMZN Adjusted Closing Price Over Time', 'AMZN.pdf')
 
     most_used_words = get_most_used_words('../data/5-core/')
     plot_most_used_words(most_used_words, 'words.pdf')
 
+    # Please note: this takes a while to run due to the amount of data being processed
     average_ratings = get_average_ratings('../data/ratings')
+    plot_all_timeseries(average_ratings)
