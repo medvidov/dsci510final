@@ -3,12 +3,12 @@ import pandas as pd
 import os
 import json
 import gzip
+import datetime
 
 # Repository link:  https://github.com/medvidov/dsci510final
 
 def get_five_core_data(directory):
     five_core = {}
-    five_core_data = []
     
     # Iterate through the data in the given directory
     for subdir, dirs, files in os.walk(directory):
@@ -16,6 +16,7 @@ def get_five_core_data(directory):
         # For each file, get the filename and extract the JSON
         for file in files:
             filename = str(os.path.join(subdir, file))
+            five_core_data = []
             # Use gzip to open the .gz and extract each line using the normal file package
             with gzip.open(filename, "rb") as f:
                 for line in f:
@@ -40,6 +41,16 @@ def get_ratings_data(directory):
             filename = str(os.path.join(subdir, file))
             # Create a DF of the data and add it to the dict
             df = pd.read_csv(filename, names = col_names)
+
+            # Convert Timestamp into dates
+            times = df['Timestamp']
+            for i in range(len(times)):
+                times[i] = datetime.datetime.fromtimestamp(times[i]).date()
+            df = df.drop(labels = 'Timestamp', axis = 1)
+            df = pd.concat([df,times], axis = 1)
+
+            # Sort the dataframe by the dates
+            df = df.sort_values('Timestamp')
             ratings[filename] = df
            
     # Return the dict of complete ratings from each file
