@@ -4,9 +4,6 @@ import pandas as pd
 import datetime
 import yfinance as yf
 import pandas as pd
-import os
-import json
-import gzip
 import re
 import matplotlib.pyplot as plt
 import numpy as np
