@@ -130,7 +130,7 @@ def plot_all_timeseries(average_ratings):
 if __name__ == '__main__':
 
     AMZN = yf.download(tickers = 'AMZN', period = '10Y', interval = '1d')
-    plot_timeseries(AMZN['Adj Close'], 'Time', 'Stock Price', 'AMZN Adjusted Closing Price', 'AMZN Adjusted Closing Price Over Time', 'AMZN.pdf')
+    plot_timeseries(AMZN['Adj Close'], 'Time', 'Stock Price', 'AMZN Adjusted Closing Price', 'AMZN Adjusted Closing Price Over Time', '../result/AMZN.pdf')
 
     most_used_words = get_most_used_words('../data/5-core/')
     plot_most_used_words(most_used_words, 'words.pdf')

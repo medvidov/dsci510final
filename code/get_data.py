@@ -7,6 +7,20 @@ import datetime
 
 # Repository link:  https://github.com/medvidov/dsci510final
 
+def get_filename(file):
+    
+    # Remove any reference of directory structures in the file
+    filename = file.split('/')[-1]
+    
+    # Remove the extension
+    filename = filename.split('.')[0]
+    
+    # If I'm using a 5-core data file, remove the _5 that denotes that it is a 5-core
+    if '_5' in filename:
+        filename = filename.split('_5')[0]
+                
+    return filename
+
 def get_five_core_data(directory):
     five_core = {}
     
@@ -25,6 +39,7 @@ def get_five_core_data(directory):
                     five_core_data.append(json_data)
             # Add data to the dict
             five_core[get_filename(filename)] = five_core_data
+            print(get_filename(filename))
            
     # Return the dict of complete ratings from each file
     return five_core
@@ -56,16 +71,10 @@ def get_ratings_data(directory):
     # Return the dict of complete ratings from each file
     return ratings
 
-def get_filename(file):
-    
-    # Remove any reference of directory structures in the file
-    filename = file.split('/')[-1]
-    
-    # Remove the extension
-    filename = filename.split('.')[0]
-    
-    # If I'm using a 5-core data file, remove the _5 that denotes that it is a 5-core
-    if '_5' in filename:
-        filename = filename.split('_5')[0]
-                
-    return filename
+if __name__ == '__main__':
+
+    five_core = get_five_core_data('../data/5-core')
+    print(len(five_core))
+
+    ratings = get_ratings_data('../data/ratings')
+    print(len(ratings))

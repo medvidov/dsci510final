@@ -16,7 +16,7 @@ import get_data
 # Suppress warnings for chained assignment. It is faster than using replace()
 pd.options.mode.chained_assignment = None 
 
-# Save a plot of the most used words in the specified file
+# Save a plot of analyzed words in the specified file
 def plot_words(words, directory, savename):
 
     # Create two separate lists for the plt.pie data
@@ -34,17 +34,17 @@ def plot_words(words, directory, savename):
     print("Saved", savename)
 
 # Plot and save timeseries, very similar to the above code
-def plot_timeseries(df, x, y, data_label, title, savename):
+def plot_timeseries(df, x, y, data_label, title, directory, savename):
     plt.figure(figsize=(10, 10))
     plt.title(title)
     plt.xlabel(x)
     plt.ylabel(y)
     plt.plot(df, label = data_label)
     plt.legend()
-    plt.savefig(savename)
+    plt.savefig(directory + '/' + savename)
     print("Saved", savename)
 
 # Plot all timeseries possible
-def plot_all_timeseries(average_ratings):
+def plot_all_timeseries(average_ratings, directory):
     for key in average_ratings:
-        plot_timeseries(average_ratings[key], 'Time', 'Average Rating', key + 'Average Ratings Over Time', key + 'Average Rating', key + '.pdf')
+        plot_timeseries(average_ratings[key], 'Time', 'Average Rating', key + 'Average Ratings Over Time', key + 'Average Rating', directory, key + '.pdf')
