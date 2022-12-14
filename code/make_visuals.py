@@ -1,20 +1,6 @@
-import get_data
-import analyze
-import seaborn as sns
 import matplotlib.pyplot as plt
-import pandas as pd
-import datetime
-import yfinance as yf
-import pandas as pd
-import re
-import matplotlib.pyplot as plt
-import numpy as np
-import get_data
 
 # Repository link:  https://github.com/medvidov/dsci510final
-
-# Suppress warnings for chained assignment. It is faster than using replace()
-pd.options.mode.chained_assignment = None 
 
 # Save a plot of analyzed words in the specified file
 def plot_words(words, directory, savename):
@@ -47,4 +33,19 @@ def plot_timeseries(df, x, y, data_label, title, directory, savename):
 # Plot all timeseries possible
 def plot_all_timeseries(average_ratings, directory):
     for key in average_ratings:
-        plot_timeseries(average_ratings[key], 'Time', 'Average Rating', key + 'Average Ratings Over Time', key + 'Average Rating', directory, key + '.pdf')
+        plot_timeseries(average_ratings[key], 'Time', 'Average Rating', key + 'Average Ratings Over Time', key + 'Average Rating', directory, key + '_timeseries.pdf')
+
+# Plot and save scatterplots, very similar to the above code
+def plot_scatterplot(df, x, y, title, directory, savename):
+    plt.figure(figsize=(10, 10))
+    plt.title(title)
+    plt.xlabel(x)
+    plt.ylabel(y)
+    plt.scatter(x = df.index, y = df)
+    plt.savefig(directory + '/' + savename)
+    print("Saved", directory + '/' + savename)
+
+# Plot all scatterplots possible
+def plot_all_scatterplots(average_ratings, directory):
+    for key in average_ratings:
+        plot_scatterplot(average_ratings[key], 'Time', 'Average Rating', key + 'Average Ratings Over Time', directory, key + '_scatterplot.pdf')
