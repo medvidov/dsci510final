@@ -28,7 +28,7 @@ if __name__ == '__main__':
     print("Average ratings found for", len(average_ratings),"datasets.")
 
     # Use data to make/output visuals
-    make_visuals.plot_words(most_used_words, results, 'most_used_words.pdf')
-    make_visuals.plot_words(least_used_words, results, 'least_used_words.pdf')
+    make_visuals.plot_words(most_used_words, 'Most Used Words', results, 'most_used_words.pdf')
+    make_visuals.plot_words(least_used_words, 'Least Used Words', results, 'least_used_words.pdf')
     make_visuals.plot_all_timeseries(average_ratings, results)
     make_visuals.plot_all_scatterplots(average_ratings, results)

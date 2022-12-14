@@ -10,6 +10,7 @@ the relationship between Amazon product ratings and Amazon stock price.
 - yfinance >= 0.1.86
 - pandas >= 1.4.2
 - matplotlib >= 3.5.1
+
 To install this project's dependencies, run
 ```
 pip install -r requirements.txt
@@ -76,7 +77,8 @@ line graphs so as to illustrate the trends in average rating over time.
 
 Because the words in an Amazon review are a useful indicator of a person's feelings in that review even without a rating, I decided to determine the most and least
 used words in the 5-cores data. This proved to be less useful than anticipated because words such as "this" and "it" were commonly used and I did not have an
-effective way to filter prepositions and the like. Notably the least used words were all used only once (1 time) each. They may also have been typos.
+effective way to filter prepositions and the like. Notably the least used words were all used only once (1 time) each. They may also have been typos, which would require
+further filtering.
 
 ### Average rating per day
 
@@ -92,11 +94,15 @@ To effectively communicate the most and least used words, I used matplotlib to c
 read and provided an idea of how much given words were used relative to others. As noted previously, the words found were not the most useful data due to my inability to 
 filter prepositions and the like. The least used words were all used once (1 time) each. Each slice of the pie represented a word with a size proportional to the relative use of that word in the most or least used words list. Each slice was also individually color coded.
 
+![Least used words pie chart](/assets/pie.png)
+
 ### Line graphs
 
 Line graphs are the easiest way to communicate changes in stock values over time. Because of my initial intent for this project, I also created line plots of average rating
 over time. However, this was harder to read than I would have liked. In the case of the line graphs, the x-axis represents time and the y-axis represents the numerical
 variable (either average rating or stock price).
+
+![Average rating line graph](/assets/line.png)
 
 ### Scatterplots
 
@@ -104,9 +110,7 @@ To compensate for the difficulty of reading line graphs for average rating, I in
 these were easier to read and communicated the data more clearly. As with the line graphs, the x-axis represents time and the y-axis represents the average rating of products
 on that day.
 
-### Advanced Visualizations
-
-And here
+![Average rating scatterplot](/assets/scatter.png)
 
 # Future Work
 
