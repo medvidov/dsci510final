@@ -19,7 +19,6 @@ def get_most_used_words(directory):
     for key in five_core_keys:
 
         file = get_data.get_filename(key)
-        print(file)
 
         # For each review in each file
         for i in range(len(five_core[file])):

@@ -31,7 +31,7 @@ def plot_words(words, directory, savename):
     plt.pie(counts, labels = labels)
     plt.legend()
     plt.savefig(directory + '/' + savename)
-    print("Saved", savename)
+    print("Saved", directory + '/' + savename)
 
 # Plot and save timeseries, very similar to the above code
 def plot_timeseries(df, x, y, data_label, title, directory, savename):
@@ -42,7 +42,7 @@ def plot_timeseries(df, x, y, data_label, title, directory, savename):
     plt.plot(df, label = data_label)
     plt.legend()
     plt.savefig(directory + '/' + savename)
-    print("Saved", savename)
+    print("Saved", directory + '/' + savename)
 
 # Plot all timeseries possible
 def plot_all_timeseries(average_ratings, directory):

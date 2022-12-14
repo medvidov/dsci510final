@@ -39,7 +39,6 @@ def get_five_core_data(directory):
                     five_core_data.append(json_data)
             # Add data to the dict
             five_core[get_filename(filename)] = five_core_data
-            print(get_filename(filename))
            
     # Return the dict of complete ratings from each file
     return five_core
