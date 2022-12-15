@@ -112,6 +112,14 @@ on that day.
 
 ![Average rating scatterplot](/assets/scatter.png)
 
+### Interactive line graphs
+
+In `Bonus.ipynb` I have included code for interactive line graphs to help users understand the relationship between stock price and average rating.
+Due to the sheer density information of the average rating graphs, they are slightly hard to use, but this code provides a useful proof of concept for comparing such data.
+Additionally, the average rating graph becomes much more accessible to the user, even if it is still not perfect. This code was different than anticipated because I initially
+had a much more ambitious plan where the stock price would be overlayed with the ratings data. Ultimately my computer could not process all the data so I opted for a simpler
+approach. To run this code, simply run the Jupyter notebook.
+
 # Future Work
 
 In the future I would like to use the 5-cores data for its intended purpose and perform sentiment analysis on this new Amazon reviews.
