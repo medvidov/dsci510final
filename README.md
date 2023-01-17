@@ -5,6 +5,11 @@ This project uses the [Amazon Review Data](https://nijianmo.github.io/amazon/ind
 The 5-cores data is used to determine the most commonly used words across reviews. The ratings data is used to produce line and scatter plots to aid in understanding
 the relationship between Amazon product ratings and Amazon stock price.
 
+# Citation
+Justifying recommendations using distantly-labeled reviews and fined-grained aspects
+Jianmo Ni, Jiacheng Li, Julian McAuley
+Empirical Methods in Natural Language Processing (EMNLP), 2019
+
 # Dependencies
 
 - yfinance >= 0.1.86
